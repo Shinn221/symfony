@@ -1,0 +1,10 @@
+{# templates/_partials/_navbar.html.twig #}
+<nav class="bg-gray-900 text-white p-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="{{ path('app_home') }}" class="text-xl font-bold text-yellow-400">CinéTech</a>
+        <div class="space-x-6">
+            <a href="{{ path('app_home') }}" class="hover:text-yellow-400">Accueil</a>
+            <a href="{{ path('app_movie_index') }}" class="hover:text-yellow-400">Catalogue</a>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ movie.title }} - CinéTech{% endblock %}
+
+{% block body %}
+    <div class="bg-white rounded-lg shadow-md p-8 max-w-2xl mx-auto">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-3xl font-bold">{{ movie.title | upper }}</h1>
+            {% if movie.pressRating is not null and movie.pressRating >= 4.5 %}
+                <span class="bg-yellow-400 text-gray-900 text-sm font-bold px-3 py-1 rounded">
+                    Coup de cœur
+                </span>
+            {% endif %}
+        </div>
+
+        <p class="text-gray-500 mb-6">
+            Catégorie : <strong>{{ movie.category.name }}</strong> |
+            Sortie : <strong>{{ movie.releaseDate | date('d/m/Y') }}</strong> |
+            Durée : <strong>{{ movie.duration }} min</strong>
+            {% if movie.pressRating is not null %}
+                | Note presse : <strong>{{ movie.pressRating }}/5</strong>
+            {% endif %}
+        </p>
+
+        <h2 class="text-lg font-semibold mb-2">Synopsis</h2>
+        <p class="text-gray-700 leading-relaxed mb-8">{{ movie.synopsis }}</p>
+
+        <a href="{{ path('app_movie_index') }}" class="text-blue-600 hover:underline font-medium">
+            ← Retour au catalogue
+        </a>
+    </div>
+{% endblock %}
