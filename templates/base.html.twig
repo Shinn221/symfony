@@ -6,6 +6,16 @@
     <title>{% block title %}CinéTech{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="p-4 mb-4 rounded {{ label == 'warning' ? 'bg-amber-100 text-amber-900' : 'bg-emerald-100 text-emerald-900' }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+
 <body class="bg-gray-100 text-gray-800">
     {% include '_partials/_navbar.html.twig' ignore missing %}
 

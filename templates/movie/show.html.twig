@@ -28,5 +28,7 @@
         <a href="{{ path('app_movie_index') }}" class="text-blue-600 hover:underline font-medium">
             ← Retour au catalogue
         </a>
+
+        <a href="{{ path('app_movie_edit', {id: movie.id}) }}" class="inline-block bg-amber-500 text-white font-semibold px-4 py-2 rounded hover:bg-amber-600 mr-4">Modifier ce film</a>
     </div>
 {% endblock %}

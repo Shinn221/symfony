@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier {{ movie.title }} - CinéTech{% endblock %}
+
+{% block body %}
+    <h1 class="text-3xl font-bold mb-6">Modifier : {{ movie.title }}</h1>
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="mt-4 bg-blue-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-700">
+            Enregistrer les modifications
+        </button>
+    {{ form_end(form) }}
+
+    <div class="mt-4">
+        <a href="{{ path('app_movie_show', {id: movie.id}) }}" class="text-blue-600 hover:underline">
+            ← Retour à la fiche
+        </a>
+    </div>
+{% endblock %}
