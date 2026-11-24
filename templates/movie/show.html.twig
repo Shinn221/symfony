@@ -30,5 +30,10 @@
         </a>
 
         <a href="{{ path('app_movie_edit', {id: movie.id}) }}" class="inline-block bg-amber-500 text-white font-semibold px-4 py-2 rounded hover:bg-amber-600 mr-4">Modifier ce film</a>
+
+        <form method="post" action="{{ path('app_movie_delete', {id: movie.id}) }}" onsubmit="return confirm('Supprimer définitivement ce film ?');" class="inline-block">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ movie.id) }}">
+            <button type="submit" class="bg-red-600 text-white font-semibold px-4 py-2 rounded hover:bg-red-700">Supprimer</button>
+        </form>
     </div>
 {% endblock %}

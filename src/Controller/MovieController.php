@@ -76,4 +76,19 @@ class MovieController extends AbstractController
     {
         return $this->json($movieRepository->findAll());
     }
+
+    #[Route('/catalogue/{id}/supprimer', name: 'app_movie_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
+    public function delete(Movie $movie, Request $request, EntityManagerInterface $em): Response
+    {
+        $token = $request->getPayload()->getString('_token');
+
+        if ($this->isCsrfTokenValid('delete' . $movie->getId(), $token)) {
+            $em->remove($movie);
+            $em->flush();
+
+            $this->addFlash('warning', 'Le film a bien été supprimé.');
+        }
+
+        return $this->redirectToRoute('app_movie_index', [], Response::HTTP_SEE_OTHER);
+    }
 }
